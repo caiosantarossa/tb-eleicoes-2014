@@ -1,0 +1,128 @@
+<ul class="nav nav-tabs" role="tablist">
+  <li class="active"><a href="#candidatos" role="tab" data-toggle="tab">Candidatos</a></li>
+  <li><a href="#excelencias" role="tab" data-toggle="tab">Excelências</a></li>
+</ul>
+
+<br>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="candidatos">
+  
+    <div class="form-group">
+        <label class="control-label" for="nome">Estado*</label>
+        <div class="controls">
+            <select class="form-control" data-ng-model="estado" ng-options="estado as estado.nome for estado in estados"></select>
+        </div>
+    </div>
+  
+    <div class="form-group">
+        <label class="control-label" for="nome">Cargo*</label>
+        <div class="controls">
+            <select class="form-control" data-ng-model="cargo" ng-options="cargo as cargo.nome for cargo in cargos"></select>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label" for="nome">Partido</label>
+        <div class="controls">
+            <select class="form-control" data-ng-model="partido" ng-options="partido as partido.sigla for partido in partidos"></select>
+        </div>
+    </div>
+    
+    <div>
+    	<a ng-click="listCandidatos()" class="btn btn-success">Pesquisar Candidatos</a>
+    </div>
+    
+    <br/>
+    <br/>
+  
+    <table class="table table-striped" ng-show="candidatos.length > 0">
+      <thead>
+        <tr>
+          <th>Foto</th>
+          <th>Apelido</th>
+          <th>Nome</th>
+          <th>Partido</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat='candidato in candidatos'>
+          <td>
+            <a ng-click="selectCandidato">
+              <img src="{{candidato.foto}}"></img>
+            </a>
+          </td>
+          <td>
+            <a ng-click="selectCandidato">{{candidato.apelido}}</a>
+          </td>
+          <td>
+            <a ng-click="selectCandidato">{{candidato.nome}}</a>
+          </td>
+          <td>
+            <a ng-click="selectCandidato">{{candidato.partido}}</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="tab-pane" id="excelencias">
+  
+    <div class="form-group">
+        <label class="control-label" for="nome">Casa*</label>
+        <div class="controls">
+            <select class="form-control" data-ng-model="casa">
+              <option value="1"> Câmara dos Deputados </option>
+              <option value="2"> Senado Federal </option>
+            </select>
+        </div>
+    </div>
+  
+    <div class="form-group">
+        <label class="control-label" for="nome">Estado</label>
+        <div class="controls">
+            <select class="form-control" data-ng-model="estado" ng-options="estado as estado.nome for estado in estados"></select>
+        </div>
+    </div>
+  
+    <div class="form-group">
+        <label class="control-label" for="nome">Partido</label>
+        <div class="controls">
+            <select class="form-control" data-ng-model="partido" ng-options="partido as partido.sigla for partido in partidos"></select>
+        </div>
+    </div>
+    
+    <div>
+    	<a ng-click="listExcelencias()" class="btn btn-success">Pesquisar Excelências</a>
+    </div>
+    
+    <br/>
+    <br/>
+  
+    <table class="table table-striped" ng-show="excelencias.length > 0">
+      <thead>
+        <tr>
+          <th>Apelido</th>
+          <th>Nome</th>
+          <th>Partido</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat='excelencia in excelencias'>
+          <td>
+            <a ng-click="selectExcelencia">{{excelencia.apelido}}</a>
+          </td>
+          <td>
+            <a ng-click="selectExcelencia">{{excelencia.nome}}</a>
+          </td>
+          <td>
+            <a ng-click="selectExcelencia">{{excelencia.partido}}</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+  </div>
+  
+</div>
